@@ -205,7 +205,6 @@ footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-w
 </div>
 
 <div class="portfolio-grid">
-  
   <div class="portfolio-item">
     <div class="portfolio-img" onclick="openModal('01-business-tips.webp')"><img src="01-business-tips.webp" alt="قواعد أساسية لنجاح المشاريع" loading="lazy"></div>
     <div class="portfolio-content">
@@ -313,7 +312,6 @@ footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-w
       <p>تصميم إعلاني ترويجي لزيادة العملاء والمبيعات الحقيقية.</p>
     </div>
   </div>
-
 </div>
 </div>
 </section>
@@ -488,7 +486,6 @@ footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-w
 </footer>
 
 <script>
-// نافذة تكبير الصورة عند النقر
 function openModal(src) {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('modalImg');
@@ -511,53 +508,35 @@ function updateOptions() {
   const serviceVal = serviceSelect.value;
   countSelect.innerHTML = '<option value="" selected disabled>اختر الخيار المناسب</option>';
   
-  if (serviceVal === 'تصميم هوية بصرية وقوالب ثابتة') {
-    countLabel.textContent = 'اختر باقة الهوية البصرية *';
-    const options = [
+  const optionsMap = {
+    'تصميم هوية بصرية وقوالب ثابتة': [
       {val: 'هوية بصرية أساسية', text: 'شعار + الألوان والخطوط الأساسية'},
       {val: 'هوية بصرية متكاملة للشركات', text: 'هوية كاملة + قوالب ثابتة للسوشيال ميديا'},
       {val: 'حزمة قوالب ثابتة فقط', text: 'مجموعة قوالب ثابتة قابلة للتعديل'}
-    ];
-    options.forEach(opt => {
-      let el = document.createElement('option');
-      el.value = opt.val;
-      el.textContent = opt.text;
-      countSelect.appendChild(el);
-    });
-  } else if (serviceVal === 'تصاميم إعلانات ممولة') {
-    countLabel.textContent = 'اختر نوع الحملة الإعلانية *';
-    const options = [
+    ],
+    'تصاميم إعلانات ممولة': [
       {val: 'تصميم إعلان ممول فردي (Ads)', text: 'تصميم إعلان احترافي واحد'},
       {val: 'حزمة 3 إعلانات ممولة', text: 'حزمة لاختبار A/B للحملات'},
       {val: 'باقة إعلانات الحملات الشهرية', text: 'باقة متكاملة لحملات الشهر'}
-    ];
-    options.forEach(opt => {
-      let el = document.createElement('option');
-      el.value = opt.val;
-      el.textContent = opt.text;
-      countSelect.appendChild(el);
-    });
-  } else if (serviceVal === 'باقة شهرية لبوستات السوشيال ميديا') {
-    countLabel.textContent = 'اختر باقة السوشيال ميديا *';
-    const options = [
+    ],
+    'باقة شهرية لبوستات السوشيال ميديا': [
       {val: '5 تصميمات', text: '5 تصميمات سوشيال ميديا'},
       {val: '10 تصميمات', text: '10 تصميمات سوشيال ميديا'},
       {val: '12 تصميم (المعرض كامل)', text: '12 تصميم متكامل (المعرض كامل)'},
       {val: 'باقة 15-20 تصميم', text: 'باقة متوسطة (15-20 تصميم)'},
       {val: 'باقة شهرية كاملة', text: 'باقة شهرية شاملة'}
-    ];
-    options.forEach(opt => {
-      let el = document.createElement('option');
-      el.value = opt.val;
-      el.textContent = opt.text;
-      countSelect.appendChild(el);
-    });
-  } else if (serviceVal === 'تصميم فردي مخصص') {
-    countLabel.textContent = 'اختر عدد التصاميم *';
-    const options = [
+    ],
+    'تصميم فردي مخصص': [
       {val: 'تصميم 1', text: 'تصميم منفرد'}
-    ];
-    options.forEach(opt => {
+    ]
+  };
+
+  if (optionsMap[serviceVal]) {
+    countLabel.textContent = serviceVal === 'تصميم هوية بصرية وقوالب ثابتة' ? 'اختر باقة الهوية البصرية *' :
+                             serviceVal === 'تصاميم إعلانات ممولة' ? 'اختر نوع الحملة الإعلانية *' :
+                             serviceVal === 'باقة شهرية لبوستات السوشيال ميديا' ? 'اختر باقة السوشيال ميديا *' : 'اختر عدد التصاميم *';
+    
+    optionsMap[serviceVal].forEach(opt => {
       let el = document.createElement('option');
       el.value = opt.val;
       el.textContent = opt.text;
@@ -579,26 +558,22 @@ function updateSummary() {
     return;
   }
 
-  let calculatedPrice = 0;
+  const prices = {
+    'هوية بصرية أساسية': 35.0,
+    'هوية بصرية متكاملة للشركات': 65.0,
+    'حزمة قوالب ثابتة فقط': 25.0,
+    'تصميم إعلان ممول فردي (Ads)': 2.0,
+    'حزمة 3 إعلانات ممولة': 5.5,
+    'باقة إعلانات الحملات الشهرية': 55.0,
+    '5 تصميمات': 7.5,
+    '10 تصميمات': 15.0,
+    '12 تصميم (المعرض كامل)': 18.0,
+    'باقة 15-20 تصميم': 25.0,
+    'باقة شهرية كاملة': 45.0,
+    'تصميم 1': 1.5
+  };
 
-  if (serviceVal === 'تصميم هوية بصرية وقوالب ثابتة') {
-    if (countVal === 'هوية بصرية أساسية') calculatedPrice = 35.0;
-    else if (countVal === 'هوية بصرية متكاملة للشركات') calculatedPrice = 65.0;
-    else if (countVal === 'حزمة قوالب ثابتة فقط') calculatedPrice = 25.0;
-  } else if (serviceVal === 'تصاميم إعلانات ممولة') {
-    if (countVal === 'تصميم إعلان ممول فردي (Ads)') calculatedPrice = 2.0;
-    else if (countVal === 'حزمة 3 إعلانات ممولة') calculatedPrice = 5.5;
-    else if (countVal === 'باقة إعلانات الحملات الشهرية') calculatedPrice = 55.0;
-  } else if (serviceVal === 'باقة شهرية لبوستات السوشيال ميديا') {
-    if (countVal === '5 تصميمات') calculatedPrice = 7.5;
-    else if (countVal === '10 تصميمات') calculatedPrice = 15.0;
-    else if (countVal === '12 تصميم (المعرض كامل)') calculatedPrice = 18.0;
-    else if (countVal === 'باقة 15-20 تصميم') calculatedPrice = 25.0;
-    else if (countVal === 'باقة شهرية كاملة') calculatedPrice = 45.0;
-  } else if (serviceVal === 'تصميم فردي مخصص') {
-    calculatedPrice = 1.5;
-  }
-
+  const calculatedPrice = prices[countVal] || 0;
   totalPrice.textContent = calculatedPrice > 0 ? calculatedPrice.toFixed(2) + ' $' : '0.00$';
 }
 
@@ -618,8 +593,7 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
   const totalVal = totalPrice.textContent;
 
   const msg = `مرحباً أويس، أود طلب تصميم:\n\n- الاسم/النشاط: ${name}\n- الهاتف: ${fullPhone}\n- الخدمة: ${service}\n- الباقة/الخيار: ${countText}\n- السعر التقديري الإجمالي: ${totalVal}\n- ملاحظات: ${notes || 'لا يوجد'}`;
-  const url = `https://wa.me/963939916838?text=${encodeURIComponent(msg)}`;
-  window.open(url, '_blank');
+  window.open(`https://wa.me/963939916838?text=${encodeURIComponent(msg)}`, '_blank');
 });
 </script>
 

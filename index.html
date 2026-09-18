@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Designer owais — معرض أعمال تصاميم السوشيال ميديا والإعلانات البصرية.">
+<title>Designer owais — Social Media Design Portfolio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap');
+
+:root{
+  --bg:#ffffff;
+  --card:#ffffff;
+  --text:#0b132b;
+  --muted:#556070;
+  --line:#e2e8f0;
+  --accent:#1d3557;
+  --accent-light:#457b9d;
+  --shadow:0 8px 22px rgba(11,19,43,.04);
+  --radius:12px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Tajawal',Tahoma,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.65;
+  font-weight:400;
+  font-size:14.2px;
+  -webkit-font-smoothing:antialiased;
+}
+
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+.container{width:min(1080px,92%);margin:auto}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(255,255,255,.96);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{min-height:70px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-size:20px;font-weight:700;letter-spacing:.2px;color:var(--text);display:flex;align-items:center;gap:6px}
+.logo span{color:var(--accent)}
+.logo-symbols{color:var(--accent-light);font-weight:700;font-size:15.5px;letter-spacing:2px}
+
+.nav-links{display:flex;gap:22px;color:#334155;font-size:14.2px;font-weight:500}
+.nav-links a{transition:color 0.2s ease}
+.nav-links a:hover{color:var(--accent-light)}
+
+.nav-cta,.btn{border:0;border-radius:9px;padding:9px 16px;font-weight:500;cursor:pointer;transition:.2s}
+.nav-cta,.btn-primary{background:var(--accent);color:#ffffff;box-shadow:0 5px 15px rgba(29,53,87,.1)}
+.btn:hover,.nav-cta:hover{transform:translateY(-1px);filter:brightness(1.05)}
+
+.hero{padding:75px 0 60px;background:var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border:1px solid var(--line);background:#f8fafc;border-radius:999px;color:var(--accent);font-size:13.2px;font-weight:500;margin-bottom:14px}
+
+.hero h1{font-size:clamp(28px,3.4vw,45px);line-height:1.2;margin-bottom:14px;font-weight:700;color:var(--text)}
+.hero h1 span{color:var(--accent)}
+.hero p{font-size:15.5px;color:var(--muted);max-width:590px;margin-bottom:20px;font-weight:350;line-height:1.7}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--accent)}
+.btn-outline:hover{background:#f8fafc;color:var(--accent-light)}
+
+.ad-banner-mockup{background:linear-gradient(135deg, #0b132b 0%, #1d3557 100%);border-radius:16px;padding:26px;color:#fff;box-shadow:var(--shadow);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.ad-banner-mockup::before{content:'';position:absolute;top:-30px;right:-30px;width:110px;height:110px;background:rgba(255,255,255,.03);border-radius:50%}
+.ad-tag{display:inline-block;background:rgba(255,255,255,0.15);padding:3px 8px;border-radius:4px;font-size:11.5px;margin-bottom:10px;letter-spacing:1px}
+.ad-title{font-size:20px;font-weight:700;margin-bottom:5px}
+.ad-desc{font-size:14.2px;color:#cbd5e1;margin-bottom:14px;font-weight:300}
+.ad-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.15);padding-top:8px;font-size:13.2px;color:#94a3b8}
+
+section{padding:60px 0}
+.section-head{text-align:center;margin-bottom:28px}
+.eyebrow{color:var(--accent-light);font-weight:700;font-size:13.2px;margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.section-head h2{font-size:28px;margin-bottom:4px;font-weight:700;color:var(--text)}
+.section-head p{color:var(--muted);max-width:560px;margin:auto;font-size:14.5px;font-weight:350}
+
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.portfolio-item{background:#ffffff;border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:.2s;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.portfolio-item:hover{transform:translateY(-2px);border-color:var(--accent)}
+.portfolio-img{height:220px;background:#f8fafc;position:relative;overflow:hidden;cursor:pointer}
+.portfolio-img img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .3s}
+.portfolio-item:hover .portfolio-img img{transform:scale(1.02)}
+.portfolio-content{padding:13px;display:flex;flex-direction:column;flex-grow:1}
+.portfolio-content h3{font-size:15.5px;font-weight:700;margin-bottom:3px;color:var(--text)}
+.portfolio-content p{color:var(--muted);font-size:13.2px;margin-bottom:7px;flex-grow:1;font-weight:350}
+.tag{display:inline-block;padding:2px 7px;background:#f8fafc;border:1px solid var(--line);border-radius:99px;font-size:11px;font-weight:500;color:var(--accent);width:fit-content}
+
+.about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.about-card{background:#ffffff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.about-number{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:8px;background:var(--accent);color:#fff;font-weight:700;font-size:12.5px;margin-bottom:8px}
+.about-card h3{font-size:16.5px;margin-bottom:4px;font-weight:700;color:var(--text)}
+.about-card p{color:var(--muted);font-size:13.5px;font-weight:350}
+
+.order-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:20px;align-items:start}
+.order-info,.form-card{background:#ffffff;border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.order-info h3{font-size:20px;margin-bottom:6px;font-weight:700}
+.order-info p{color:var(--muted);font-weight:350;font-size:14.2px}
+.benefits{margin-top:15px;display:grid;gap:8px}
+.benefit{padding:10px 12px;border:1px solid var(--line);border-radius:9px;background:#f8fafc;font-weight:500;font-size:13.5px}
+
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field{display:flex;flex-direction:column;gap:5px}
+.field.full{grid-column:1/-1}
+
+.field label{font-size:14px;color:var(--text);font-weight:700}
+.field input,.field select,.field textarea{width:100%;border:1px solid var(--line);background:#f8fafc;color:var(--text);border-radius:8px;padding:10px 12px;outline:none;font-weight:400;font-size:14px}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(29,53,87,.08);background:#fff}
+
+.phone-group{display:grid;grid-template-columns:145px 1fr;gap:6px}
+
+textarea{min-height:90px;resize:vertical}
+
+.summary{margin-top:15px;padding:15px;border-radius:10px;background:#f8fafc;border:1px solid var(--line)}
+.summary-title{font-size:14.8px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.summary-line{display:flex;justify-content:space-between;gap:8px;margin:3px 0;color:#334155;font-weight:400;font-size:13.8px}
+.summary-total{font-size:19.5px;font-weight:700;color:var(--accent);border-top:1px solid var(--line);padding-top:8px;margin-top:8px;display:flex;justify-content:space-between}
+.submit{width:100%;margin-top:12px;padding:13px;font-size:15.5px;font-weight:700}
+.note{font-size:12.5px;color:var(--muted);margin-top:6px;font-weight:350}
+
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contact-card{background:#ffffff;border:1px solid var(--line);border-radius:12px;padding:20px;box-shadow:var(--shadow)}
+.contact-card strong{display:block;margin-bottom:3px;font-size:15.5px;font-weight:700;color:var(--text)}
+.contact-card span{color:var(--muted);font-weight:350;font-size:13.5px}
+
+footer{padding:25px 0;border-top:1px solid var(--line);color:var(--muted);font-weight:400;font-size:13.2px;background:#f8fafc}
+.footer-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.mobile-menu{display:none}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(11,19,43,0.85);z-index:100;justify-content:center;align-items:center;padding:20px}
+.modal img{max-width:90%;max-height:90vh;border-radius:12px;object-fit:contain}
+.modal-close{position:absolute;top:20px;right:30px;color:#fff;font-size:35px;cursor:pointer;font-weight:bold}
+
+@media(max-width:768px){
+  .hero-grid,.order-wrap,.about-grid{grid-template-columns:1fr}
+  .portfolio-grid{grid-template-columns:repeat(2, 1fr);gap:10px}
+  .contact{grid-template-columns:1fr}
+  .nav-links{display:none}
+  .mobile-menu{display:block;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:16px}
+  .nav-links.open{display:flex;position:absolute;top:70px;right:0;left:0;background:#ffffff;padding:16px 5%;flex-direction:column;border-bottom:1px solid var(--line);box-shadow:0 8px 18px rgba(0,0,0,.06)}
+  .form-grid{grid-template-columns:1fr}
+  .phone-group{grid-template-columns:120px 1fr}
+}
+@media(max-width:480px){
+  .portfolio-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home"><span class="logo-symbols">::</span> Designer owais <span class="logo-symbols">::</span></a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">الرئيسية</a>
+      <a href="#portfolio">معرض الأعمال</a>
+      <a href="#about">نبذة عني</a>
+      <a href="#order">اطلب تصميمك</a>
+      <a href="#contact">تواصل معي</a>
+    </nav>
+    <a class="nav-cta" href="#order">اطلب تصميمك</a>
+    <button class="mobile-menu" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<main id="home">
+<section class="hero">
+<div class="container hero-grid">
+  <div>
+    <div class="badge">● Social Media Design Portfolio</div>
+    <h1>أهلاً بك في موقع معرض أعمال <span>Designer owais</span> المخصص في تصميم إعلانات السوشيال ميديا</h1>
+    <p>أتشرف بكم في تصفح معرض أعمالي المكون من 12 بوست. نصمم لك بوستات وإعلانات تجارية وهويات بصرية مميزة تُظهر مشروعك بأعلى رقي وتميز عن المنافسين.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#portfolio">تصفح الأعمال</a>
+      <a class="btn btn-outline" href="#order">اطلب تصاميمك الآن</a>
+    </div>
+  </div>
+  
+  <div class="ad-banner-mockup">
+    <span class="ad-tag">CREATIVE PORTFOLIO</span>
+    <div class="ad-title">اصنع هوية بصرية لا تُنسى</div>
+    <div class="ad-desc">حوّل حساباتك ومتاجر على منصات التواصل الاجتماعي إلى واجهة احترافية تجذب آلاف العملاء بدقة وإبداع.</div>
+    <div class="ad-footer">
+      <span>12 بوست تصميم احترافي</span>
+      <span>جودة عالية متكاملة</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="portfolio">
+<div class="container">
+<div class="section-head">
+  <div class="eyebrow">PORTFOLIO</div>
+  <h2>معرض أعمال تصاميم السوشيال ميديا</h2>
+  <p>تصفح النماذج الـ 12 المصممة خصيصاً لرفع تفاعل ونجاح المشاريع التجاريّة.</p>
+</div>
+
+<div class="portfolio-grid">
+  
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('01-business-tips.webp')"><img src="01-business-tips.webp" alt="قواعد أساسية لنجاح المشاريع" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Business Tips</span>
+      <h3>قواعد أساسية لنجاح المشاريع</h3>
+      <p>تصميم توعوي وتسويقي منظم لجذب اهتمام المتابعين.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('02-training-course.webp')"><img src="02-training-course.webp" alt="إعلان دورة تدريبية احترافية" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Training Course</span>
+      <h3>إعلان دورة تدريبية احترافية</h3>
+      <p>تصميم إعلاني متكامل يوضح التفاصيل والأهداف بكفاءة.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('03-engineering-solutions.webp')"><img src="03-engineering-solutions.webp" alt="أفكار هندسية ذكية" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Engineering Solutions</span>
+      <h3>أفكار هندسية ذكية</h3>
+      <p>تصميم تقني يعرض الخدمات الهندسية والحلول المبتكرة.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('05-university-welcome.webp')"><img src="05-university-welcome.webp" alt="ترحيب بالطلاب الجدد" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">University Welcome</span>
+      <h3>ترحيب بالطلاب الجدد</h3>
+      <p>تصميم أكاديمي حيوي يرحب بالطلاب في رحاب الجامعة.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('06-restaurant.webp')"><img src="06-restaurant.webp" alt="وجبات فاخرة وسريعة" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Restaurant Ads</span>
+      <h3>وجبات فاخرة وسريعة</h3>
+      <p>تصميم إعلاني تجاري للمطاعم يعكس جودة الأطباق بأسلوب شهي.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('07-education-ad.webp')"><img src="07-education-ad.webp" alt="شرح مواد الفيزياء والكيمياء" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Education</span>
+      <h3>شرح مواد الفيزياء والكيمياء</h3>
+      <p>إعلان تعليمي مخصص للمراحل الإعدادية والثانوية.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('08-personal-brand.webp')"><img src="08-personal-brand.webp" alt="تعزيز الهوية الشخصية" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Personal Branding</span>
+      <h3>تعزيز الهوية الشخصية</h3>
+      <p>تصميم تسويقي يركز على تميز العلامة التجارية عن المنافسين.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('09-beauty-care.webp')"><img src="09-beauty-care.webp" alt="جمال ينبع من العناية" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Beauty & Care</span>
+      <h3>جمال ينبع من العناية</h3>
+      <p>تصميم إعلاني ترويجي لمنتجات العناية بالبشرة والجمال.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('10-daily-habits.webp')"><img src="10-daily-habits.webp" alt="عادات يومية تصنع فرقاً" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Daily Habits</span>
+      <h3>5 عادات يومية تصنع فرقاً</h3>
+      <p>تصميم توعوي هادف يبرز أهمية التنظيم والتطوير الذاتي.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('11-branding-ad.webp')"><img src="11-branding-ad.webp" alt="قيمة منتجك الحقيقي" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Branding Ad</span>
+      <h3>قيمة منتجك الحقيقي</h3>
+      <p>تصميم إعلاني يبرز احترافية الإعلانات والهوية التجارية.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('12-growth-ad.webp')"><img src="12-growth-ad.webp" alt="عكس قيمة وقوة مشروعك" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Business Growth</span>
+      <h3>عكس قيمة وقوة مشروعك</h3>
+      <p>إعلان تحفيزي لأصحاب المشاريع والشركات الناشئة.</p>
+    </div>
+  </div>
+
+  <div class="portfolio-item">
+    <div class="portfolio-img" onclick="openModal('13-ad-campaign.webp')"><img src="13-ad-campaign.webp" alt="تحويل الميزانية لأرباح" loading="lazy"></div>
+    <div class="portfolio-content">
+      <span class="tag">Ad Campaign</span>
+      <h3>تحويل ميزانية الإعلانات لأرباح</h3>
+      <p>تصميم إعلاني ترويجي لزيادة العملاء والمبيعات الحقيقية.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+</section>
+
+<!-- نافذة تكبير الصورة (Lightbox) -->
+<div class="modal" id="imageModal" onclick="closeModal()">
+  <span class="modal-close">&times;</span>
+  <img id="modalImg" src="" alt="تكبير التصميم">
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">WHY CHOOSE US</div>
+      <h2>لماذا تختار Designer owais</h2>
+      <p>نحرص على تقديم تصاميم تليق بعلامتك التجارية وتترك انطباعاً أولياً قوياً لدى عملائك.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <span class="about-number">01</span>
+        <h3>أسعار تنافسية ومدروسة</h3>
+        <p>نوفر تصاميم احترافية بأسعار مقبولة لتناسب جميع المشاريع والأنشطة التجارية.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-number">02</span>
+        <h3>لمسة إبداعية فريدة</h3>
+        <p>نبتعد عن القوالب الجاهزة والمكررة لنقدم لك تصاميم مميزة تعبر عن هويتك بدقة.</p>
+      </div>
+      <div class="about-card">
+        <span class="about-number">03</span>
+        <h3>سرعة ومرونة بالتعامل</h3>
+        <p>التزام بالمواعيد المحددة ومرونة تامة في التعديلات للوصول إلى النتيجة المطلوبة تماماً.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+<div class="container">
+<div class="section-head">
+  <div class="eyebrow">BOOKING & PRICING</div>
+  <h2>احسب السعر واطلب تصميمك</h2>
+  <p>اختر الخدمة والنوع المناسب ليظهر لك السعر الإجمالي بالدولار مباشرة قبل الإرسال.</p>
+</div>
+<div class="order-wrap">
+<div class="order-info">
+<h3>جاهز لنقل حساباتك لمستوى احترافي؟</h3>
+<p>اختر نوع الخدمة أو الباقة المطلوبة، واملأ بياناتك لنتواصل معك فوراً ونبدأ العمل على مشروعك.</p>
+<div class="benefits">
+<div class="benefit">🎨 تصاميم بجودة عالية ودقة تناسب جميع المنصات</div>
+<div class="benefit">⚡ سرعة بالاستجابة والتنفيذ</div>
+<div class="benefit">💬 تواصل مباشر وسلس عبر WhatsApp</div>
+</div>
+</div>
+
+<form class="form-card" id="orderForm">
+<div class="form-grid">
+<div class="field"><label>اسمك / اسم نشاطك *</label><input id="name" required placeholder="مثال: متجر الأناقة"></div>
+<div class="field">
+  <label>رقم واتساب *</label>
+  <div class="phone-group">
+    <select id="countryCode">
+      <option value="+963" selected>سوريا (+963)</option>
+      <option value="+966">السعودية (+966)</option>
+      <option value="+971">الإمارات (+971)</option>
+      <option value="+20">مصر (+20)</option>
+      <option value="+962">الأردن (+962)</option>
+      <option value="+961">لبنان (+961)</option>
+      <option value="+965">الكويت (+965)</option>
+      <option value="+974">قطر (+974)</option>
+      <option value="+973">البحرين (+973)</option>
+      <option value="+968">عمان (+968)</option>
+      <option value="+964">العراق (+964)</option>
+      <option value="+212">المغرب (+212)</option>
+      <option value="+213">الجزائر (+213)</option>
+      <option value="+216">تونس (+216)</option>
+      <option value="+249">السودان (+249)</option>
+      <option value="+967">اليمن (+967)</option>
+      <option value="+252">الصومال (+252)</option>
+      <option value="+253">جيبوتي (+253)</option>
+      <option value="+269">جزر القمر (+269)</option>
+      <option value="+222">موريتانيا (+222)</option>
+      <option value="+1">الولايات المتحدة / كندا (+1)</option>
+      <option value="+44">المملكة المتحدة (+44)</option>
+      <option value="+33">فرنسا (+33)</option>
+      <option value="+49">ألمانيا (+49)</option>
+      <option value="+39">إيطاليا (+39)</option>
+      <option value="+34">إسبانيا (+34)</option>
+      <option value="+90">تركيا (+90)</option>
+      <option value="+98">إيران (+98)</option>
+      <option value="+7">روسيا / كازاخستان (+7)</option>
+      <option value="+86">الصين (+86)</option>
+      <option value="+81">اليابان (+81)</option>
+      <option value="+82">كوريا الجنوبية (+82)</option>
+      <option value="+91">الهند (+91)</option>
+      <option value="+92">باكستان (+92)</option>
+      <option value="+880">بنغلاديش (+880)</option>
+      <option value="+62">إندونيسيا (+62)</option>
+      <option value="+60">ماليزيا (+60)</option>
+      <option value="+63">الفلبين (+63)</option>
+      <option value="+66">تايلاند (+66)</option>
+      <option value="+84">فيتنام (+84)</option>
+      <option value="+55">البرازيل (+55)</option>
+      <option value="+52">المكسيك (+52)</option>
+      <option value="+54">الأرجنتين (+54)</option>
+      <option value="+57">كولومبيا (+57)</option>
+      <option value="+56">تشيلي (+56)</option>
+      <option value="+27">جنوب إفريقيا (+27)</option>
+      <option value="+234">نيجيريا (+234)</option>
+      <option value="+254">كينيا (+254)</option>
+      <option value="+61">استراليا (+61)</option>
+      <option value="+64">نيوزيلندا (+64)</option>
+    </select>
+    <input id="phone" required placeholder="939916838">
+  </div>
+</div>
+
+<div class="field"><label>نوع الخدمة المطلوبة *</label>
+<select id="service" required onchange="updateOptions()">
+<option value="" selected disabled>اختر الخدمة</option>
+<option value="باقة شهرية لبوستات السوشيال ميديا">باقة شهرية لبوستات السوشيال ميديا</option>
+<option value="تصميم هوية بصرية وقوالب ثابتة">تصميم هوية بصرية وقوالب ثابتة</option>
+<option value="تصاميم إعلانات ممولة">تصاميم إعلانات ممولة (Ads)</option>
+<option value="تصميم فردي مخصص">تصميم فردي مخصص</option>
+</select></div>
+
+<div class="field"><label id="countLabel">عدد التصاميم التقريبي *</label>
+<select id="count" required>
+<option value="" selected disabled>اختر الخدمة أولاً</option>
+</select></div>
+
+<div class="field full"><label>تفاصيل إضافية أو ملاحظات</label><textarea id="notes" placeholder="اكتب الأفكار، الألوان المفضلة، أو طبيعة النشاط..."></textarea></div>
+</div>
+
+<div class="summary" id="summaryBox">
+<div class="summary-title">ملخص الطلب والسعر التقديري</div>
+<div class="summary-line"><span>الخدمة</span><strong id="sumService">لم يتم الاختيار</strong></div>
+<div class="summary-line"><span>الباقة / الخيار</span><strong id="sumCount">لم يتم الاختيار</strong></div>
+<div class="summary-total"><span>السعر الإجمالي:</span><span id="totalPrice">0.00 $</span></div>
+</div>
+
+<button class="btn btn-primary submit" type="submit">📲 إرسال الطلب عبر واتساب</button>
+<div class="note">سيتم تحويلك مباشرة إلى محادثة واتساب مع تفاصيل طلبك ليتم اعتماد السعر والبدء بالتنفيذ.</div>
+</form>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="section-head">
+  <div class="eyebrow">CONTACT</div>
+  <h2>تواصل معي</h2>
+  <p>لكافة استفسارات التصميم والتعاون المشترك.</p>
+</div>
+<div class="contact">
+<a class="contact-card" href="https://wa.me/963939916838?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20أويس،%20أرغب%20بالتواصل%20معك%20بخصوص%20تصاميم%20السوشيال%20ميديا." target="_blank" rel="noopener">
+<strong>📞 واتساب / هاتف</strong><span dir="ltr">+963 939 916 838</span>
+</a>
+<div class="contact-card"><strong>✉️ البريد الإلكتروني</strong><span>alsaadiowais20@gmail.com</span></div>
+<div class="contact-card"><strong>📍 العنوان</strong><span>دمشق — سوريا</span></div>
+</div>
+</div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <span>© 2026 Designer owais — جميع الحقوق محفوظة</span>
+    <span>Social Media Design Portfolio</span>
+  </div>
+</footer>
+
+<script>
+// نافذة تكبير الصورة عند النقر
+function openModal(src) {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImg');
+  modal.style.display = 'flex';
+  modalImg.src = src;
+}
+
+function closeModal() {
+  document.getElementById('imageModal').style.display = 'none';
+}
+
+const countSelect = document.getElementById('count');
+const serviceSelect = document.getElementById('service');
+const countLabel = document.getElementById('countLabel');
+const sumService = document.getElementById('sumService');
+const sumCount = document.getElementById('sumCount');
+const totalPrice = document.getElementById('totalPrice');
+
+function updateOptions() {
+  const serviceVal = serviceSelect.value;
+  countSelect.innerHTML = '<option value="" selected disabled>اختر الخيار المناسب</option>';
+  
+  if (serviceVal === 'تصميم هوية بصرية وقوالب ثابتة') {
+    countLabel.textContent = 'اختر باقة الهوية البصرية *';
+    const options = [
+      {val: 'هوية بصرية أساسية', text: 'شعار + الألوان والخطوط الأساسية'},
+      {val: 'هوية بصرية متكاملة للشركات', text: 'هوية كاملة + قوالب ثابتة للسوشيال ميديا'},
+      {val: 'حزمة قوالب ثابتة فقط', text: 'مجموعة قوالب ثابتة قابلة للتعديل'}
+    ];
+    options.forEach(opt => {
+      let el = document.createElement('option');
+      el.value = opt.val;
+      el.textContent = opt.text;
+      countSelect.appendChild(el);
+    });
+  } else if (serviceVal === 'تصاميم إعلانات ممولة') {
+    countLabel.textContent = 'اختر نوع الحملة الإعلانية *';
+    const options = [
+      {val: 'تصميم إعلان ممول فردي (Ads)', text: 'تصميم إعلان احترافي واحد'},
+      {val: 'حزمة 3 إعلانات ممولة', text: 'حزمة لاختبار A/B للحملات'},
+      {val: 'باقة إعلانات الحملات الشهرية', text: 'باقة متكاملة لحملات الشهر'}
+    ];
+    options.forEach(opt => {
+      let el = document.createElement('option');
+      el.value = opt.val;
+      el.textContent = opt.text;
+      countSelect.appendChild(el);
+    });
+  } else if (serviceVal === 'باقة شهرية لبوستات السوشيال ميديا') {
+    countLabel.textContent = 'اختر باقة السوشيال ميديا *';
+    const options = [
+      {val: '5 تصميمات', text: '5 تصميمات سوشيال ميديا'},
+      {val: '10 تصميمات', text: '10 تصميمات سوشيال ميديا'},
+      {val: '12 تصميم (المعرض كامل)', text: '12 تصميم متكامل (المعرض كامل)'},
+      {val: 'باقة 15-20 تصميم', text: 'باقة متوسطة (15-20 تصميم)'},
+      {val: 'باقة شهرية كاملة', text: 'باقة شهرية شاملة'}
+    ];
+    options.forEach(opt => {
+      let el = document.createElement('option');
+      el.value = opt.val;
+      el.textContent = opt.text;
+      countSelect.appendChild(el);
+    });
+  } else if (serviceVal === 'تصميم فردي مخصص') {
+    countLabel.textContent = 'اختر عدد التصاميم *';
+    const options = [
+      {val: 'تصميم 1', text: 'تصميم منفرد'}
+    ];
+    options.forEach(opt => {
+      let el = document.createElement('option');
+      el.value = opt.val;
+      el.textContent = opt.text;
+      countSelect.appendChild(el);
+    });
+  }
+  updateSummary();
+}
+
+function updateSummary() {
+  const serviceVal = serviceSelect.value;
+  const countVal = countSelect.value;
+  
+  sumService.textContent = serviceVal || 'لم يتم الاختيار';
+  sumCount.textContent = countSelect.options[countSelect.selectedIndex] ? countSelect.options[countSelect.selectedIndex].text : 'لم يتم الاختيار';
+  
+  if (!serviceVal || !countVal) {
+    totalPrice.textContent = '0.00 $';
+    return;
+  }
+
+  let calculatedPrice = 0;
+
+  if (serviceVal === 'تصميم هوية بصرية وقوالب ثابتة') {
+    if (countVal === 'هوية بصرية أساسية') calculatedPrice = 35.0;
+    else if (countVal === 'هوية بصرية متكاملة للشركات') calculatedPrice = 65.0;
+    else if (countVal === 'حزمة قوالب ثابتة فقط') calculatedPrice = 25.0;
+  } else if (serviceVal === 'تصاميم إعلانات ممولة') {
+    if (countVal === 'تصميم إعلان ممول فردي (Ads)') calculatedPrice = 2.0;
+    else if (countVal === 'حزمة 3 إعلانات ممولة') calculatedPrice = 5.5;
+    else if (countVal === 'باقة إعلانات الحملات الشهرية') calculatedPrice = 55.0;
+  } else if (serviceVal === 'باقة شهرية لبوستات السوشيال ميديا') {
+    if (countVal === '5 تصميمات') calculatedPrice = 7.5;
+    else if (countVal === '10 تصميمات') calculatedPrice = 15.0;
+    else if (countVal === '12 تصميم (المعرض كامل)') calculatedPrice = 18.0;
+    else if (countVal === 'باقة 15-20 تصميم') calculatedPrice = 25.0;
+    else if (countVal === 'باقة شهرية كاملة') calculatedPrice = 45.0;
+  } else if (serviceVal === 'تصميم فردي مخصص') {
+    calculatedPrice = 1.5;
+  }
+
+  totalPrice.textContent = calculatedPrice > 0 ? calculatedPrice.toFixed(2) + ' $' : '0.00$';
+}
+
+countSelect.addEventListener('change', updateSummary);
+serviceSelect.addEventListener('change', updateSummary);
+
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const countryCode = document.getElementById('countryCode').value;
+  const phoneNum = document.getElementById('phone').value;
+  const fullPhone = countryCode + phoneNum;
+
+  const name = document.getElementById('name').value;
+  const service = document.getElementById('service').value;
+  const countText = countSelect.options[countSelect.selectedIndex].text;
+  const notes = document.getElementById('notes').value;
+  const totalVal = totalPrice.textContent;
+
+  const msg = `مرحباً أويس، أود طلب تصميم:\n\n- الاسم/النشاط: ${name}\n- الهاتف: ${fullPhone}\n- الخدمة: ${service}\n- الباقة/الخيار: ${countText}\n- السعر التقديري الإجمالي: ${totalVal}\n- ملاحظات: ${notes || 'لا يوجد'}`;
+  const url = `https://wa.me/963939916838?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank');
+});
+</script>
+
+</body>
+</html>
